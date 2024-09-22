@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Life</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #wrapper{
+            border: 1px solid black;
+            min-height: 500px;
+            max-height:600px;
+            justify-content: center;
+
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 20px;
+        }
+
+        button, input {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:disabled, input:disabled {
+            background-color: #cccccc;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+
+        #canvasControls, #sizeControls, #speedControls {
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        canvas {
+            border: 1px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .control-group input {
+            max-width: 60px;
+        }
+
+        #speedDisplay {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+        <!-- Controls Section -->
+    <div id="controls">
+        <div id="canvasControls" class="control-group">
+            <button id="startButton">Start Game</button>
+            <button id="stopButton" disabled>Stop Game</button>
+            <button id="resetButton">Reset Game</button>
+            <button id="randomizeButton">Randomize Grid</button>
+        </div>
+
+        <div id="sizeControls" class="control-group">
+            <label for="canvasWidthInput">Width:</label>
+            <input type="number" id="canvasWidthInput" min="100" max="10000" value="800">
+            <label for="canvasHeightInput">Height:</label>
+            <input type="number" id="canvasHeightInput" min="100" max="10000" value="800">
+        </div>
+
+        <div id="speedControls" class="control-group">
+            <label for="speedRange">Speed:</label>
+            <input type="range" id="speedRange" min="1" max="60" step="1" value="10">
+            <span id="speedDisplay">10 FPS</span>
+        </div>
+        
+    </div>
+
+    <!-- Canvas for Game of Life -->
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="gameOfLife.js"></script>
+</div>
+
+</body>
+</html>
